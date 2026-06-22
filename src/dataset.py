@@ -16,9 +16,9 @@ class MultiTaskEmailDataset(Dataset):
         line = self.df.iloc[idx]
         text = str(line['text'])
 
-        tokens = self.tokenizer(text, padding = "max_length", truncation = True, max_length = 64)
+        tokens = self.tokenizer(text, padding = "max_length", truncation = True, max_length = 64, return_tensors="pt")
 
-        item = {key: tensor.squeeze(0) for key,tensor in tokens.items()}
+        item = {key: tensor.squeeze(0) for key, tensor in tokens.items()}
 
         item["label_spam"] = torch.tensor(line["label"], dtype=torch.long)
         item["label_priority"] = torch.tensor(line["priority"], dtype=torch.long)
