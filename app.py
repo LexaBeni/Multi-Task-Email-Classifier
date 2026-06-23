@@ -1,6 +1,4 @@
 import pandas as pd
-import plotly.express as px
-import joblib
 import torch
 from transformers import AutoTokenizer
 from src.architecture import MultiTaskEmailModel
